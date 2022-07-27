@@ -6,3 +6,5 @@ The concept of updating the page based on time was really cool to work through a
 
 https://jalenarms1.github.io/daily-agenda-challenge5/
 
+![A screenshot of the main page view on load up.](images/webpagescreensht.png)
+
