@@ -1,5 +1,5 @@
 var timeShown = document.getElementById("currentDay");
-var saveBtn = document.getElementById("save");
+var clearBtn = document.getElementById("clear");
 var nineAM = document.getElementById("9amTodo");
 var tenAM = document.getElementById("10amTodo");
 var elevenAM = document.getElementById("11amTodo");
@@ -21,16 +21,14 @@ var saveField5 = document.querySelector(".save-field5");
 var allInputEls = document.querySelectorAll("[data-input='theInputs']");
 var timeBlocks = $(".time");
 
+// grabs the current date to display in the necessary field
 theTime = moment().format("[Today is ]MM[/]DD[/]YYYY");
 timeShown.innerText = theTime;
  
 var dateReference = new Date;
 let currentHour = dateReference.getHours();
-console.log(currentHour);
-console.log(parseInt(timeBlocks[0].id));
-console.log(timeBlocks[4].id == currentHour);
-console.log(timeBlocks[0].dataset.number);
 
+// this creates a time-check for each timeblock represented by their given index
 function timeCheck(){
     for(i = 0; i < timeBlocks.length; i++){
         if(timeBlocks[i].dataset.number == currentHour){
@@ -45,7 +43,7 @@ function timeCheck(){
 }
 timeCheck();
 
-
+// this will display what was stored in the local storage in its respective field
 function getData() {
     var nineStored = localStorage.getItem("9am");
     if(nineStored !== null){
@@ -86,14 +84,15 @@ function getData() {
 
 }
 
-
-function saveSchedule(){
+// this is the function to clear the content and storage
+function clearSchedule(){
     localStorage.clear()
     allInputEls.innerText = '';
     location.reload();
 }
 getData();
 
+// each function will update the local storage with the value of that input
 function saveToStorage9(){
     localStorage.setItem("9am", nineAM.value);
     location.reload();
@@ -131,7 +130,7 @@ function saveToStorage5(){
     location.reload();
 }
 
-saveBtn.addEventListener("click", saveSchedule);
+clearBtn.addEventListener("click", clearSchedule);
 saveField9.addEventListener("click", saveToStorage9);
 saveField10.addEventListener("click", saveToStorage10);
 saveField11.addEventListener("click", saveToStorage11);
